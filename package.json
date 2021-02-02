@@ -1,0 +1,19 @@
+{
+  "name": "money-management",
+  "version": "1.0.0",
+  "description": "money management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kusenabdullah-123/money-management-mandiri.git"
+  },
+  "author": "M Kusen Abdullah",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kusenabdullah-123/money-management-mandiri/issues"
+  },
+  "homepage": "https://github.com/kusenabdullah-123/money-management-mandiri#readme"
+}
