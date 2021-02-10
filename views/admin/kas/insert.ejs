@@ -36,66 +36,41 @@
         <!-- ============================================================== -->
         <!-- end pageheader  -->
         <!-- ============================================================== -->
-
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0">
-                <a href="/admin/kas/insert" class="btn btn-outline-primary"
-                  >Masuk</a
-                >
-                <a href="/admin/kas/insert" class="btn btn-outline-primary"
-                  >Masuk</a
-                >
-              </h5>
-            </div>
+            <h5 class="card-header">Kas Masuk</h5>
             <div class="card-body">
-              <div class="table-responsive">
-                <table
-                  id="example"
-                  class="table table-striped table-bordered second"
-                  style="width: 100%"
-                >
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+              <form action="#" id="basicform" data-parsley-validate="">
+                <div class="form-group">
+                  <label for="masuk">Masuk</label>
+                  <input
+                    id="masuk"
+                    type="text"
+                    name="masuk"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Keterangan</label>
+                  <textarea
+                    class="form-control"
+                    id="keterangan"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 pl-0 offset-sm-6 offeset-lg-6">
+                    <p class="text-right">
+                      <button type="submit" class="btn btn-space btn-primary">
+                        Submit
+                      </button>
+                      <button class="btn btn-space btn-secondary">
+                        Cancel
+                      </button>
+                    </p>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

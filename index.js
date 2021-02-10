@@ -16,6 +16,9 @@ app.get("/admin/dashboard", (req, res) => {
 app.get("/admin/kas", (req, res) => {
   res.render("admin/kas/", { url });
 });
+app.get("/admin/kas/insert", (req, res) => {
+  res.render("admin/kas/insert", { url });
+});
 app.listen(process.env.PORT, () => {
   console.log(url);
 });
