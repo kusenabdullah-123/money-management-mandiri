@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 });
 app.get("/admin/dashboard", (req, res) => {
   res.render("admin/dashboard", { url });
+
 });
 app.get("/admin/kas", (req, res) => {
   res.render("admin/kas/", { url });
