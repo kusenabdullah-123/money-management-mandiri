@@ -20,6 +20,9 @@ app.get("/admin/kas", (req, res) => {
 app.get("/admin/kas/insert", (req, res) => {
   res.render("admin/kas/insert", { url });
 });
+app.get("/admin/keuangan", (req, res) => {
+  res.render("admin/keuangan/", { url });
+});
 app.listen(process.env.PORT, () => {
   console.log(url);
 });
