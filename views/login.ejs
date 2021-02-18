@@ -88,11 +88,11 @@
     <script src="public/assets/vendor/axios/axios.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const postLogin = async () => {
+        const postLogin = async (user, pass) => {
           try {
             const data = await axios.post("http://localhost:5000/", {
-              user: "a",
-              pass: "a",
+              username: user,
+              password: pass,
             });
             console.log(data);
           } catch (error) {
@@ -105,7 +105,7 @@
             e.preventDefault();
             const username = document.querySelector("#username").value;
             const password = document.querySelector("#password").value;
-            await postLogin();
+            await postLogin(username, password);
           });
       });
     </script>
