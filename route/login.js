@@ -1,10 +1,5 @@
 const router = require("express").Router();
-
-router.get("/", (req, res) => {
-  res.render("login");
-});
-router.get("/getLogin", (req, res) => {
-  req.session.login = true;
-  res.redirect("/admin/dashboard");
-});
+const { login, postLogin } = require("../controllers/login");
+router.get("/", login);
+router.post("/", postLogin);
 module.exports = router;

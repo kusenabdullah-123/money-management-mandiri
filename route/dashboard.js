@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { cekLogin } = require("../middleware/dashboard");
-router.use(cekLogin);
+// router.use(cekLogin);
 const url = `http://localhost:${process.env.PORT}`;
 router.get("/dashboard", (req, res) => {
   res.render("admin/dashboard", { url });
