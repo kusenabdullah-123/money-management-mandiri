@@ -90,11 +90,18 @@
       document.addEventListener("DOMContentLoaded", function () {
         const postLogin = async (user, pass) => {
           try {
-            const data = await axios.post("http://localhost:5000/", {
+            const {
+              data: { status, message },
+            } = await axios.post(window.location.href, {
               username: user,
               password: pass,
             });
-            console.log(data);
+            if (status) {
+              alert(message);
+              window.location.replace(`${window.location.href}admin/dashboard`);
+            } else {
+              alert(message);
+            }
           } catch (error) {
             console.log(error);
           }

@@ -7,21 +7,23 @@ const postLogin = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const result = await promiseQuery(
-      `select * from users where username = ? and password = ?`,
+      `select users.nama,users.password,users.username from users where username = ? and password = ?`,
       [username, password]
     );
 
-    result
-      ? res
-          .status(200)
-          .json({
-            status: true,
-            nama: result[0].nama,
-            username: result[0].username,
-          })
-      : res.status(200).json({ status: false, error: "eror" });
+    if (result.length > 0) {
+      req.session.login = true;
+      return res.status(200).json({
+        status: true,
+        message: "succes login",
+      });
+    } else {
+      return res
+        .status(200)
+        .json({ status: false, message: "wrong username or password" });
+    }
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ status: 500, message: "internal server error" });
   }
 };
 module.exports = { login, postLogin };

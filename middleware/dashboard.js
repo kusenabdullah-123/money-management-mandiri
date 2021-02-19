@@ -1,6 +1,7 @@
 const cekLogin = (req, res, next) => {
+  const url = `http://localhost:${process.env.PORT}`;
   if (!req.session.login) {
-    return res.redirect("/");
+    return res.render("admin/forbiden", { url });
   }
   next();
 };
