@@ -40,15 +40,15 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="text-muted">kenaikan bulan kemarin</h5>
+                  <h5 class="text-muted">kenaikan bulan Ini</h5>
                   <div class="metric-value d-inline-block">
-                    <h1 class="mb-1">$12099</h1>
+                    <h1 class="mb-1" id="countMonth"><%= monthUp %></h1>
                   </div>
                   <div
-                    class="metric-label d-inline-block float-right text-success font-weight-bold"
+                    class="metric-label d-inline-block float-right <%=labelMonth %> font-weight-bold"
                   >
-                    <span><i class="fa fa-fw fa-arrow-up"></i></span
-                    ><span>5.86%</span>
+                    <span><i class="fa fa-fw <%= arrowMonth %>"></i></span
+                    ><span><%= persenMonth %> %</span>
                   </div>
                 </div>
                 <div id="sparkline-revenue"></div>
@@ -59,12 +59,12 @@
                 <div class="card-body">
                   <h5 class="text-muted">Kenaikan Hari Ini</h5>
                   <div class="metric-value d-inline-block">
-                    <h1 class="mb-1"><%= kenaikan %></h1>
+                    <h1 class="mb-1" id="countDay"><%= kenaikan %></h1>
                   </div>
                   <div
-                    class="metric-label d-inline-block float-right text-success font-weight-bold"
+                    class="metric-label d-inline-block float-right <%= labelDay%> font-weight-bold"
                   >
-                    <span><i class="fa fa-fw fa-arrow-up"></i></span
+                    <span><i class="fa fa-fw <%= arrowDay %> "></i></span
                     ><span><%= persenDay %> %</span>
                   </div>
                 </div>
@@ -128,6 +128,10 @@
 <!-- ============================================================== -->
 <!-- Optional JavaScript -->
 <%- include('_partials/optional-js'); -%>
+
+<script src="<%= url %>/public/assets/vendor/chart/Chart.min.js"></script>
+<script type="module" src="<%= url %>/public/assets/libs/js/dashboard.js">
+  
 </script>
 </body>
 

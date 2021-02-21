@@ -27,6 +27,10 @@ app.set("view engine", "ejs");
 app.use("/", require("./route/login"));
 app.use("/admin", require("./route/dashboard"));
 const url = `http://localhost:${process.env.PORT}`;
+app.get("/admin/kas", (req, res) => {
+  res.render("admin/kas/index", { url });
+});
+
 app.listen(process.env.PORT, () => {
   console.log(url);
 });
