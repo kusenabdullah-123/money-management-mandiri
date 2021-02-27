@@ -1,6 +1,12 @@
 const router = require("express").Router();
 const { cekLogin } = require("../middleware/dashboard");
-const { getDayUp, getMonthUp, getText } = require("../controllers/dashboard");
+const {
+  getDayUp,
+  getMonthUp,
+  getText,
+  getSaldo,
+  getPengeluaran,
+} = require("../controllers/dashboard");
 // router.use(cekLogin);
 const url = `http://localhost:${process.env.PORT}`;
 router.get("/dashboard", async (req, res) => {
@@ -8,6 +14,8 @@ router.get("/dashboard", async (req, res) => {
   const { monthUp, persenMonth } = await getMonthUp();
   const [arrowDay, labelDay] = getText(kenaikan);
   const [arrowMonth, labelMonth] = getText(monthUp);
+  const saldo = await getSaldo();
+  const pengeluaran = await getPengeluaran();
   res.render("admin/dashboard", {
     url,
     persenDay,
@@ -18,6 +26,8 @@ router.get("/dashboard", async (req, res) => {
     arrowMonth,
     labelDay,
     labelMonth,
+    saldo,
+    pengeluaran,
   });
 });
 router.get("/logout", (req, res) => {

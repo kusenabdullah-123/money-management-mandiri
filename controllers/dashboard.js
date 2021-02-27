@@ -42,4 +42,18 @@ const getText = (value) => {
     ? ["fa-arrow-down", "text-secondary"]
     : ["fa-arrow-up", "text-success"];
 };
-module.exports = { getDayUp, getMonthUp, getText };
+const getSaldo = async () => {
+  const saldo = await promiseQuery(
+    "SELECT SUM(kas.masuk) - SUM(kas.keluar) as saldo from kas",
+    []
+  );
+  return saldo[0].saldo;
+};
+const getPengeluaran = async () => {
+  const pengeluaran = await promiseQuery(
+    "SELECT SUM(kas.keluar) as pengeluaran FROM kas",
+    []
+  );
+  return pengeluaran[0].pengeluaran;
+};
+module.exports = { getDayUp, getMonthUp, getText, getSaldo, getPengeluaran };

@@ -3,13 +3,19 @@ import { CountUp } from "../../vendor/countup/countUp.min.js";
 window.addEventListener("DOMContentLoaded", (event) => {
   const dayCount = document.querySelector("#countDay").innerHTML;
   const monthCount = document.querySelector("#countMonth").innerHTML;
+  const saldo = document.querySelector("#saldo").innerHTML;
+  const pengeluaran = document.querySelector("#pengeluaran").innerHTML;
   const countUp = new CountUp("countDay", dayCount);
   const monthUp = new CountUp("countMonth", monthCount);
+  const saldoUp = new CountUp("saldo", saldo);
+  const pengeluaranUp = new CountUp("pengeluaran", pengeluaran);
   countUp.start();
   monthUp.start();
+  saldoUp.start();
+  pengeluaranUp.start();
 
   const ctx = document.getElementById("chart_dashboard").getContext("2d");
-  const myChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: "bar",
     data: {
       labels: ["januari", "Feb", "Mar", "apr", "mei", "Juni"],
