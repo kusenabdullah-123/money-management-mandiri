@@ -1,3 +1,4 @@
+const { promise } = require("../database/db");
 const { promiseQuery } = require("../middleware/promise-query");
 const getDayUp = async () => {
   let persenDay;
@@ -56,4 +57,41 @@ const getPengeluaran = async () => {
   );
   return pengeluaran[0].pengeluaran;
 };
-module.exports = { getDayUp, getMonthUp, getText, getSaldo, getPengeluaran };
+const getChart = async () => {
+  const bulan = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let kasMasuk = [];
+  let kasKeluar = [];
+  await Promise.all(
+    bulan.map(async (item) => {
+      const result = await promiseQuery(
+        `SELECT SUM(kas.masuk)AS masuk,sum(kas.keluar) as keluar FROM kas WHERE DATE_FORMAT(kas.tanggal,'%M') = "${item}"`,
+        []
+      );
+      const { masuk, keluar } = result[0];
+      kasMasuk = [...kasMasuk, parseInt(masuk)];
+      kasKeluar = [...kasKeluar, parseInt(keluar)];
+    })
+  );
+  return { bulan, kasMasuk, kasKeluar };
+};
+module.exports = {
+  getDayUp,
+  getMonthUp,
+  getText,
+  getSaldo,
+  getPengeluaran,
+  getChart,
+};

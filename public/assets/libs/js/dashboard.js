@@ -1,6 +1,7 @@
 import { CountUp } from "../../vendor/countup/countUp.min.js";
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", async (event) => {
+  // weiget
   const dayCount = document.querySelector("#countDay").innerHTML;
   const monthCount = document.querySelector("#countMonth").innerHTML;
   const saldo = document.querySelector("#saldo").innerHTML;
@@ -13,53 +14,83 @@ window.addEventListener("DOMContentLoaded", (event) => {
   monthUp.start();
   saldoUp.start();
   pengeluaranUp.start();
-
+  // Chart
+  const getDataChart = async () => {
+    const { data } = await axios.get("/admin/chart");
+    return data;
+  };
+  const { bulan, kasMasuk, kasKeluar } = await getDataChart();
   const ctx = document.getElementById("chart_dashboard").getContext("2d");
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["januari", "Feb", "Mar", "apr", "mei", "Juni"],
+      labels: bulan,
       datasets: [
         {
-          label: "label 1",
-          data: [12, 19, 3, 5, 2, 3],
+          label: "Masuk",
+          data: kasMasuk,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
           ],
           borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
-            "rgba(255, 99, 132, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(54, 162, 235, 1)",
           ],
           borderWidth: 1,
         },
         {
-          label: "label 2",
-          data: [12, 19, 3, 5, 2, 3],
+          label: "Keluar",
+          data: kasKeluar,
           backgroundColor: [
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
           ],
           borderColor: [
-            "rgba(54, 162, 235, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(54, 162, 235, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
+            "rgba(255, 99, 132, 1)",
           ],
+
           borderWidth: 1,
         },
       ],

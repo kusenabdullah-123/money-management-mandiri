@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+jQuery(document).ready((function ($) {
   "use strict";
 
   // ==============================================================
@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
     $(".sidebar-nav-fixed a")
       // Remove links that don't actually link to anything
 
-      .click(function (event) {
+      .click((function (event) {
         // On-page links
         if (
           location.pathname.replace(/^\//, "") ==
@@ -38,7 +38,7 @@ jQuery(document).ready(function ($) {
                 scrollTop: target.offset().top - 90,
               },
               1000,
-              function () {
+              (function () {
                 // Callback after animation
                 // Must change focus!
                 var $target = $(target);
@@ -50,15 +50,15 @@ jQuery(document).ready(function ($) {
                   $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
                   $target.focus(); // Set focus again
                 }
-              }
+              })
             );
           }
         }
-        $(".sidebar-nav-fixed a").each(function () {
+        $(".sidebar-nav-fixed a").each((function () {
           $(this).removeClass("active");
-        });
+        }));
         $(this).addClass("active");
-      });
+      }));
   }
 
   // ==============================================================
@@ -84,4 +84,5 @@ jQuery(document).ready(function ($) {
       width: "100%",
     });
   }
-});
+}));
+
